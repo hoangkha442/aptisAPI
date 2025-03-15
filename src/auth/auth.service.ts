@@ -20,7 +20,6 @@ export class AuthService {
             throw new HttpException('Sai email!', HttpStatus.BAD_REQUEST);
         }
 
-        // Kiểm tra mật khẩu
         const isPasswordMatching = await bcrypt.compare(bodyLogin.password, getUser.password);
         if (!isPasswordMatching) {
             throw new HttpException("Sai mật khẩu!", HttpStatus.BAD_REQUEST);

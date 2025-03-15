@@ -38,14 +38,14 @@ export class UsersService {
   async update(id: number, updateUserDto: UpdateUserDto) {
     const user = await this.prisma.users.findUnique({ where: { user_id: id } });
     if (!user) throw new NotFoundException(`User #${id} not found`);
-
-    // Không cập nhật mật khẩu ở đây
+  
     const { password, ...updateData } = updateUserDto;
     return this.prisma.users.update({
       where: { user_id: id },
-      data: updateData,
+      data: updateData,  
     });
   }
+  
 
   async updatePassword(id: number, updatePasswordDto: UpdatePasswordDto) {
     const user = await this.prisma.users.findUnique({ where: { user_id: id } });
@@ -62,6 +62,7 @@ export class UsersService {
   }
 
   
+
   async remove(id: number) {
     const user = await this.prisma.users.findUnique({ where: { user_id: id } });
     if (!user) throw new NotFoundException(`User #${id} not found`);

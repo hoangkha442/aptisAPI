@@ -31,7 +31,6 @@ export class CoursesController {
     return this.coursesService.remove(+id);
   }
 
-  // Get course statistics: total, active, inactive courses
   @Get('statistics')
   getStatistics() {
     return this.coursesService.getStatistics();

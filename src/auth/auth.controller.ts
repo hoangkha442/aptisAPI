@@ -4,7 +4,6 @@ import { bodyLogin } from './dto/login.dto';
 import { BodySignup } from './dto/signup.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
-// import { NewPasswordDto, ResetPasswordDto } from './dto/reset-password.dto';
 import { RequestWithUser } from 'src/interfaces';
 
 @ApiTags("Auth")
@@ -26,7 +25,6 @@ export class AuthController {
     }
   } 
   
-  // Get user information
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   @Get('get-info')  
@@ -41,13 +39,5 @@ export class AuthController {
     return this.authService.signup(bodySignup)
   }
 
-  // @Post('send-reset-password-email')
-  //   async sendResetPasswordEmail(@Body() resetPasswordDto: ResetPasswordDto) {
-  //       return this.authService.sendResetPasswordEmail(resetPasswordDto);
-  //   }
 
-  //   @Post('reset-password')
-  //   async resetPassword(@Body() newPasswordDto: NewPasswordDto) {
-  //       return this.authService.resetPassword(newPasswordDto);
-  //   }
 }
